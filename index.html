@@ -1,7 +1,145 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Table Tennis Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+        }
+        nav {
+            margin: 20px;
+        }
+        nav a {
+            margin: 0 15px;
+            color: #333;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        h1 {
+            color: #333;
+        }
+        .container {
+            padding: 20px;
+        }
+        .btn {
+            background-color: #008cba;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 5px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .btn:hover {
+            background-color: #005f5f;
+        }
+        .form-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px auto;
+            max-width: 400px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input[type="text"], input[type="email"], textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="submit"] {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        footer {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+        }
+    </style>
+</head>
 <body>
-<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjOssuzgwiPG-hqVq0g4EJ0izq3ydswFsfrw&s"
-      width="1230"
-      height="800" />
+
+<header>
+    <h1>Welcome to Table Tennis World</h1>
+</header>
+
+<nav>
+    <a href="#about">About</a>
+    <a href="#rules">Rules</a>
+    <a href="#contact">Contact Us</a>
+</nav>
+
+<div class="container" id="about">
+    <h2>About Table Tennis</h2>
+    <p>Table Tennis, also known as Ping Pong, is a fast-paced sport that is enjoyed by people of all ages. It requires quick reflexes, precision, and a lot of skill.</p>
+    <img src="https://via.placeholder.com/400" alt="Table Tennis" style="width:100%; max-width: 600px;">
+</div>
+
+<div class="container" id="rules">
+    <h2>Table Tennis Rules</h2>
+    <p>The basic rules of table tennis involve scoring points by hitting the ball over the net so that your opponent cannot return it. The first player to 11 points wins the game.</p>
+    <button class="btn" onclick="showRules()">Read More</button>
+</div>
+
+<div class="container" id="contact">
+    <h2>Contact Us</h2>
+    <div class="form-container">
+        <form id="contactForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+
+            <input type="submit" value="Submit">
+        </form>
+        <p id="response"></p>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2024 Table Tennis World. All rights reserved.</p>
+</footer>
+
+<script>
+    function showRules() {
+        alert("Table Tennis is played with a ball and paddles on a table with a net. Players alternate hitting the ball, trying to score points by getting the ball past their opponent.");
+    }
+
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        let name = document.getElementById('name').value;
+        let email = document.getElementById('email').value;
+        let message = document.getElementById('message').value;
+
+        document.getElementById('response').innerHTML = `Thank you, ${name}! We will respond to your message sent from ${email} as soon as possible.`;
+    });
+</script>
+
 </body>
 </html>
