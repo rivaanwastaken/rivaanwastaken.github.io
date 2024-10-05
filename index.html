@@ -3,143 +3,296 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Table Tennis Website</title>
+    <title>Pro Table Tennis World</title>
     <style>
+        /* General styling */
         body {
-            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
-            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #f7f9fc;
         }
         header {
-            background-color: #333;
+            background-color: #2c3e50;
             color: white;
-            padding: 10px 0;
+            padding: 20px;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 999;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
         }
         nav {
-            margin: 20px;
+            margin: 20px 0;
         }
         nav a {
+            color: #ecf0f1;
             margin: 0 15px;
-            color: #333;
             text-decoration: none;
-            font-size: 18px;
+            font-size: 1.2rem;
         }
-        h1 {
-            color: #333;
+        nav a:hover {
+            text-decoration: underline;
         }
-        .container {
-            padding: 20px;
-        }
-        .btn {
-            background-color: #008cba;
-            border: none;
+
+        /* Hero section */
+        .hero {
+            height: 90vh;
+            background-image: url('https://via.placeholder.com/1920x1080');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             color: white;
-            padding: 10px 20px;
             text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 5px 2px;
-            cursor: pointer;
-            border-radius: 5px;
         }
-        .btn:hover {
-            background-color: #005f5f;
+        .hero h2 {
+            font-size: 3rem;
+            margin: 0;
+            animation: fadeIn 2s ease;
         }
-        .form-container {
-            background-color: white;
+
+        /* Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Section styling */
+        section {
+            padding: 80px 20px;
+            margin-top: 20px;
+        }
+        .content-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        /* Table Tennis Rules */
+        #rules ul {
+            text-align: left;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0;
+        }
+        #rules li {
+            list-style: none;
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+            position: relative;
+        }
+        #rules li:before {
+            content: '🏓';
+            position: absolute;
+            left: -30px;
+        }
+
+        /* Scoreboard */
+        #scoreboard {
+            background-color: #ecf0f1;
+            border-radius: 10px;
             padding: 20px;
-            border-radius: 5px;
-            margin: 20px auto;
-            max-width: 400px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
         }
-        input[type="text"], input[type="email"], textarea {
+        #scoreboard h3 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+        #scoreboard .scores {
+            font-size: 2rem;
+            margin: 20px 0;
+        }
+        #scoreboard .player {
+            display: inline-block;
+            width: 40%;
+        }
+        #scoreboard button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        #scoreboard button:hover {
+            background-color: #2980b9;
+        }
+
+        /* Player stats */
+        .player-stats {
+            display: flex;
+            justify-content: space-between;
+            text-align: center;
+        }
+        .player-stats .card {
+            width: 30%;
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Contact form */
+        #contact-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        #contact-form label {
+            font-weight: bold;
+        }
+        #contact-form input, #contact-form textarea {
             width: 100%;
             padding: 10px;
             margin: 10px 0;
-            border: 1px solid #ccc;
             border-radius: 5px;
+            border: 1px solid #ccc;
         }
-        input[type="submit"] {
-            background-color: #4caf50;
-            color: white;
-            padding: 10px;
+        #contact-form button {
+            grid-column: span 2;
+            background-color: #2ecc71;
             border: none;
+            padding: 10px;
+            color: white;
+            font-size: 1rem;
             cursor: pointer;
             border-radius: 5px;
         }
+        #contact-form button:hover {
+            background-color: #27ae60;
+        }
+
         footer {
-            margin-top: 20px;
-            padding: 10px;
-            background-color: #333;
+            text-align: center;
+            padding: 20px;
+            background-color: #2c3e50;
             color: white;
+            margin-top: 50px;
         }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>Welcome to Table Tennis World</h1>
+    <h1>Pro Table Tennis World</h1>
+    <nav>
+        <a href="#rules">Rules</a>
+        <a href="#scoreboard">Scoreboard</a>
+        <a href="#stats">Player Stats</a>
+        <a href="#contact">Contact Us</a>
+    </nav>
 </header>
 
-<nav>
-    <a href="#about">About</a>
-    <a href="#rules">Rules</a>
-    <a href="#contact">Contact Us</a>
-</nav>
-
-<div class="container" id="about">
-    <h2>About Table Tennis</h2>
-    <p>Table Tennis, also known as Ping Pong, is a fast-paced sport that is enjoyed by people of all ages. It requires quick reflexes, precision, and a lot of skill.</p>
-    <img src="https://via.placeholder.com/400" alt="Table Tennis" style="width:100%; max-width: 600px;">
+<!-- Hero Section -->
+<div class="hero">
+    <h2>Welcome to the World of Table Tennis</h2>
 </div>
 
-<div class="container" id="rules">
-    <h2>Table Tennis Rules</h2>
-    <p>The basic rules of table tennis involve scoring points by hitting the ball over the net so that your opponent cannot return it. The first player to 11 points wins the game.</p>
-    <button class="btn" onclick="showRules()">Read More</button>
-</div>
-
-<div class="container" id="contact">
-    <h2>Contact Us</h2>
-    <div class="form-container">
-        <form id="contactForm">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" rows="4" required></textarea>
-
-            <input type="submit" value="Submit">
-        </form>
-        <p id="response"></p>
+<!-- Rules Section -->
+<section id="rules">
+    <div class="content-container">
+        <h2 class="section-title">Table Tennis Rules</h2>
+        <ul>
+            <li>The game is played to 11 points. The first player to reach 11 points wins.</li>
+            <li>Players alternate serves every two points, except in deuce situations.</li>
+            <li>The ball must bounce on both sides of the table for a valid serve.</li>
+            <li>Games are typically played best out of 5 or 7 sets.</li>
+        </ul>
     </div>
-</div>
+</section>
 
+<!-- Scoreboard Section -->
+<section id="scoreboard">
+    <div class="content-container">
+        <h2 class="section-title">Live Scoreboard</h2>
+        <h3>Match: Player 1 vs Player 2</h3>
+        <div class="scores">
+            <div class="player" id="player1-score">Player 1: 0</div>
+            <div class="player" id="player2-score">Player 2: 0</div>
+        </div>
+        <button onclick="updateScore('player1')">Player 1 Scores!</button>
+        <button onclick="updateScore('player2')">Player 2 Scores!</button>
+    </div>
+</section>
+
+<!-- Player Stats Section -->
+<section id="stats">
+    <div class="content-container">
+        <h2 class="section-title">Top Players Stats</h2>
+        <div class="player-stats">
+            <div class="card">
+                <h3>Player 1</h3>
+                <p>Games Won: 50</p>
+                <p>Highest Score: 11</p>
+            </div>
+            <div class="card">
+                <h3>Player 2</h3>
+                <p>Games Won: 42</p>
+                <p>Highest Score: 11</p>
+            </div>
+            <div class="card">
+                <h3>Player 3</h3>
+                <p>Games Won: 35</p>
+                <p>Highest Score: 10</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Form Section -->
+<section id="contact">
+    <div class="content-container">
+        <h2 class="section-title">Contact Us</h2>
+        <form id="contact-form">
+            <div>
+                <label for="name">Name:</label>
+                <input type="text" id="name" required>
+            </div>
+            <div>
+                <label for="email">Email:</label>
+                <input type="email" id="email" required>
+            </div>
+            <div>
+                <label for="message">Message:</label>
+                <textarea id="message" rows="4" required></textarea>
+            </div>
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
+</section>
+
+<!-- Footer -->
 <footer>
-    <p>&copy; 2024 Table Tennis World. All rights reserved.</p>
+    <p>&copy; 2024 Pro Table Tennis World. All rights reserved.</p>
 </footer>
 
+<!-- JavaScript -->
 <script>
-    function showRules() {
-        alert("Table Tennis is played with a ball and paddles on a table with a net. Players alternate hitting the ball, trying to score points by getting the ball past their opponent.");
-    }
+    // Scoreboard functionality
+    let player1Score = 0;
+    let player2Score = 0;
 
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        let name = document.getElementById('name').value;
-        let email = document.getElementById('email').value;
-        let message = document.getElementById('message').value;
+    function updateScore(player) {
+        if (player === 'player1') {
+            player1Score++;
+            document.getElementById('player1-score').textContent = `Player 1: ${player1Score}`;
+        } else if (player === 'player2') {
+           
 
-        document.getElementById('response').innerHTML = `Thank you, ${name}! We will respond to your message sent from ${email} as soon as possible.`;
-    });
-</script>
-
-</body>
-</html>
